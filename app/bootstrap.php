@@ -7,6 +7,11 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $app = new Slim\App();
 
+// Request
+// $app->get('/', function($request, $response){
+//     return 'Hello, World!';
+// });
+// Response
 $app->get('/', function($request, $response){
-    return 'Hello, World!';
+    return $response->write('Hello, World from response Param');
 });
