@@ -7,5 +7,9 @@
 
 $app->get('/', 'HomeController:index')->setName('home');
 
-$app->get('/login', 'AuthController:login')->setName('auth.login');
-$app->get('/registrar', 'AuthController:register')->setName('auth.register');
+$app->group('/auth', function($app) {
+
+    $app->map(['GET', 'POST'], '/login', 'AuthController:login')->setName('auth.login');
+    $app->map(['GET', 'POST'], '/registrar', 'AuthController:register')->setName('auth.register');
+
+});
