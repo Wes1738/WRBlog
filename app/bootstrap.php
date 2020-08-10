@@ -13,5 +13,5 @@ $app = new Slim\App();
 // });
 // Response
 $app->get('/', function($request, $response){
-    return $response->write('Hello, World from response Param');
+    return $response->write('What is your name? My name is: ' . $request->getParam('name'));
 });
