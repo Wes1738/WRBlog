@@ -1,0 +1,13 @@
+vendor/bin/
+vendor/composer/
+vendor/doctrine/
+vendor/illuminate/
+vendor/nesbot/
+vendor/nikic/
+vendor/phpmailer/
+vendor/pimple/
+vendor/psr/
+vendor/respect/
+vendor/slim/
+vendor/symfony/
+vendor/twig/
