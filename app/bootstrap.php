@@ -36,6 +36,10 @@ $container['flash'] = function($container) {
     return new \Slim\Flash\Messages;
 };
 
+$container['auth'] = function($container) {
+    return new \App\Auth\Auth($container);
+};
+
 $container['view'] = function ($container) {
     $view = new \Slim\Views\Twig(__DIR__ . '/../resources/views', [
         'cache' => false,
@@ -44,6 +48,11 @@ $container['view'] = function ($container) {
     $view->addExtension(new Slim\Views\TwigExtension($container->router, $container->request->getUri()));
 
     $view->getEnvironment()->addGlobal('flash', $container->flash);
+
+    $view->getEnvironment()->addGlobal('auth', [
+        'check' => $container->auth->check(),
+        'user' => $container->auth->user(),
+    ]);
     
     return $view;
 };

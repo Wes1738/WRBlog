@@ -11,27 +11,28 @@
       </span>
     </div>
     <div id="navbarMenu" class="navbar-menu">
-      <div class="navbar-end">
+
+     <div class="navbar-end">
         <a href="{{ path_for('home') }}" class="navbar-item is-active">
           Home
         </a>
         {% if not auth.check %}
-        <a href="{{ path_for('auth.login') }}" class="navbar-item is-active">
-          Login
-        </a>
-        <a href="{{ path_for('auth.register') }}" class="navbar-item is-active">
-          Registrar
-        </a>
+          <a href="{{ path_for('auth.login') }}" class="navbar-item is-active">
+            Login
+          </a>
+          <a href="{{ path_for('auth.register') }}" class="navbar-item is-active">
+            Registrar
+          </a>
         {% else %}
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
-              Marcus Pereira
+              {{ auth.user.name }}
             </a>
             <div class="navbar-dropdown">
-              <a class="navbar-item" href="{{ path_for('post.create') }}">
+              <a class="navbar-item" href="#">
                 Dashboard
               </a>
-              <a class="navbar-item" href="{{ path_for('user.avatar') }}">
+              <a class="navbar-item" href="#">
                   Avatar
               </a>
               <hr class="navbar-divider">
@@ -39,9 +40,9 @@
                 Sair
               </a>
             </div>
-          </div>    
+          </div>
         {% endif %}
-      </div>
+     </div>
     </div>
-  </div>
+    </div>
 </nav>
