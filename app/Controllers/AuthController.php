@@ -20,12 +20,15 @@ class AuthController extends Controller {
         }
 
         $now = new \DateTime(date('d/m/Y H:i:s'));
+        // Praxzo de 1 hora para validar o token
+        $now->modify('+1 hour');
+        $key = bin2hex(random_bytes(20));
 
         User::create([
             'name' => $request->getParam('name'),
             'email' => $request->getParam('email'),
-            'password' => $request->getParam('password'),
-            'confirmation_key' => 'jklkajdshadilas'/*$request->getParam('confirmation_key')*/,
+            'password' => password_hash($request->getParam('password'), PASSWORD_DEFAULT),
+            'confirmation_key' => $key/*$request->getParam('confirmation_key')*/,
             'confirmation_expires' => $now/*$request->getParam('confirmation_expires')*/,
         ]);
 
