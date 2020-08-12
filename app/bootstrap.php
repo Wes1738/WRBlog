@@ -57,13 +57,21 @@ $container['view'] = function ($container) {
     return $view;
 };
 
-$container['HomeController'] = function ($container) {
-    return new App\Controllers\HomeController($container);
-};
+// $container['HomeController'] = function ($container) {
+//     return new App\Controllers\HomeController($container);
+// };
 
-$container['AuthController'] = function ($container) {
-    return new App\Controllers\AuthController($container);
-};
+// $container['AuthController'] = function ($container) {
+//     return new App\Controllers\AuthController($container);
+// };
+
+// $container['UserController'] = function ($container) {
+//     return new App\Controllers\UserController($container);
+// };
+
+require __DIR__ . '/commons.php';
+
+getControllers($container, ['HomeController', 'AuthController', 'UserController']);
 
 $app->add(new App\Middleware\DisplayInputErrorsMiddleware($container));
 
