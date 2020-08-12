@@ -1,13 +1,19 @@
-  <p>Olá, </p>
+{% extends "layouts/base.twig" %}
 
-  <p>
-    Obrigado por criar o resgistro em nosso blog. Mas para que sua conta seja ativada
-    você deve clicar <a href="">aqui</a> para ativa-la.
-  </p>
+{% block content %}
+<p>Olá, {{ name }}</p>
 
-  <br />
+<p>
+  Obrigado por criar o resgistro em nosso blog. Mas para que sua conta seja ativada
+  você deve clicar <a href="http://localhost:8000/auth/confirmacao?confirmation={{confirmation}}">aqui</a> para ativa-la.
+</p>
 
-  <small> 
-    Equipe, <br />
-    Marcus Pereira Developer
-  </small>
+<br />
+
+<small> 
+  Equipe, <br />
+  Wesley Rodrigues Developer
+</small>
+
+ 
+{% endblock %}
