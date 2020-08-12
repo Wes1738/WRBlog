@@ -22,9 +22,9 @@ $app->group('/usuario', function($app) {
 });
 
 $app->group('/auth', function($app) {
-
-    $app->map(['GET', 'POST'], '/login', 'AuthController:login')->setName('auth.login');
-    $app->map(['GET', 'POST'], '/registrar', 'AuthController:register')->setName('auth.register');
-    $app->get('/logout', 'AuthController:logout')->setName('auth.logout');
-
+    $app->map(['GET', 'POST'],'/login', 'AuthController:login')->setName('auth.login');
+    $app->map(['GET', 'POST'],'/registrar', 'AuthController:register')->setName('auth.register');
+    $app->get('/confirmacao', 'AuthController:confirmation');
+    $app->get('/reenviar', 'AuthController:resend')->setName('auth.resend');
+    $app->get('logout', 'AuthController:logout')->setName('auth.logout');
 });

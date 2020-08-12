@@ -27,16 +27,24 @@ class Auth
 
     public function attempt(string $email, string $password)
     {
-       $user = User::where('email', $email)->first();
+        $user = User::where('email', $email)->first();
 
-       if(!$user || !password_verify($password, $user->password)) {
-            $this->container->flash->addMessage('error', 'Suas credenciais parecem estar erradas! Por favor, verificar');
+        if (!$user || !password_verify($password, $user->password)) {
+            $this->container->flash->addMessage('error', 'Suas credenciais parecem está erradas! Por fravor, verificar.');
             return false;
-       }
+        }
 
-       $_SESSION['user'] = $user->id;
+        if (!$user->is_confirmation) {
+            $this->container->flash->addMessage(
+                'error',
+                "Você precisa confirmar seu cadastro antes de continuar."
+            );
+            
+            return false;
+        }
 
-       return true;
+        $_SESSION['user'] = $user->id;
 
+        return true;
     }
 }

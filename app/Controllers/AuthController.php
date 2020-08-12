@@ -76,7 +76,7 @@ class AuthController extends Controller
     {
         $user = User::where('confirmation_key', $request->getParam('confirmation'))->first();
 
-        if(!user)
+        if(!$user)
             $this->container->flash->addMessage('error', 'A conta que você está tentando confirmar não existe.');
 
         if (strtotime(date('d/m/Y H:i:s')) > strtotime($user->confirmation_expires)) {
