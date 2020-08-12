@@ -1,5 +1,6 @@
 <?php
 
+use App\Middleware\AuthMiddleware;
 // Request
 // $app->get('/', function($request, $response){
 //     return 'Hello, World!';
@@ -14,7 +15,7 @@ $app->group('/postagem', function($app) {
     
     $app->get('/edit/{id}', 'PostController:edit')->setName('post.edit');
     $app->post('/edit/{id}', 'PostController:update');
-})/*->add(new AuthMiddleware($container))*/;
+})->add(new AuthMiddleware($container));
 
 $app->group('/usuario', function($app) {
     $app->map(['GET', 'POST'], '/avatar', 'UserController:avatar')->setName('user.avatar');
