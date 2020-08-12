@@ -3,7 +3,7 @@
 {% block content %}
 <section class="articles">
     <figure class="image is-128x128 image container">
-      <img class="is-rounded" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/55363e72-0771-474c-8670-64a9895108d0/d235ulv-5a369e83-0f80-43cd-a559-5469603745b5.png/v1/fill/w_247,h_250,strp/all_blacks_tux_avatar_by_techspider_d235ulv-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD0yNTAiLCJwYXRoIjoiXC9mXC81NTM2M2U3Mi0wNzcxLTQ3NGMtODY3MC02NGE5ODk1MTA4ZDBcL2QyMzV1bHYtNWEzNjllODMtMGY4MC00M2NkLWE1NTktNTQ2OTYwMzc0NWI1LnBuZyIsIndpZHRoIjoiPD0yNDcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.OTxRbpdEGTHHglXTxQ7OZJ2vmxlcIl3v9BO4IHQd-g8">
+      <img class="is-rounded" src="{{ base_url() }}/uploads/{{ auth.user.avatar }}">
     </figure>
     <div class="column is-8 is-offset-2">
       <div class="card article">
@@ -34,8 +34,8 @@
           </form>
         </div>
       </div>
+
+      {% include "components/notifications.twig" %}
     </div>
-
   </section>
-
 {% endblock %}
