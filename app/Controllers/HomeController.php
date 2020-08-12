@@ -2,10 +2,17 @@
 
 namespace App\Controllers;
 
-class HomeController extends Controller {
+use App\Models\Post;
 
-    public function index ($request, $response) 
+
+class HomeController extends Controller
+{
+    public function index($request, $response)
     {
-        return $this->container->view->render($response, 'index.twig');
+        $data = [
+            'posts' => Post::all()
+        ];
+
+        return $this->container->view->render($response, 'index.twig', $data);
     }
 }
